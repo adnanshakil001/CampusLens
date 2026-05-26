@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fcf9f8;
+  --foreground: #1c1b1b;
+  
+  --primary: #000666;
+  --primary-container: #1a237e;
+  --secondary: #a43d07;
+  --secondary-container: #fe7f48;
+  --surface: #ffffff;
+  --on-surface: #1c1b1b;
+  --on-surface-variant: #454652;
+  --outline: #767683;
+  --border-subtle: #E0E0E0;
+  --surface-muted: #F2F2F8;
+  --status-success: #2E7D32;
+  --error: #ba1a1a;
+  --status-info: #0288D1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-border-subtle: var(--border-subtle);
+  --color-surface-muted: var(--surface-muted);
+  --color-status-success: var(--status-success);
+  --color-error: var(--error);
+  --color-status-info: var(--status-info);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Custom styling utilities for modern aesthetics */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #000666 0%, #1a237e 50%, #a43d07 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+

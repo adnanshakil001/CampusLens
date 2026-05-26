@@ -1,0 +1,335 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Compare Colleges - EduSelect</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1c1b1b",
+                        "surface": "#fcf9f8",
+                        "inverse-surface": "#313030",
+                        "on-error-container": "#93000a",
+                        "status-success": "#2E7D32",
+                        "tertiary": "#16104e",
+                        "on-tertiary-fixed": "#17104f",
+                        "on-surface-variant": "#454652",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-on-surface": "#f3f0ef",
+                        "inverse-primary": "#bdc2ff",
+                        "on-secondary-container": "#692200",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#9590d4",
+                        "tertiary-container": "#2c2764",
+                        "outline": "#767683",
+                        "surface-muted": "#F2F2F8",
+                        "tertiary-fixed-dim": "#c5c0ff",
+                        "background": "#fcf9f8",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#e3dfff",
+                        "secondary": "#a43d07",
+                        "surface-container-high": "#ebe7e7",
+                        "surface-container-low": "#f6f3f2",
+                        "outline-variant": "#c6c5d4",
+                        "secondary-fixed": "#ffdbce",
+                        "primary-fixed": "#e0e0ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#4c56af",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#000767",
+                        "on-primary-fixed-variant": "#343d96",
+                        "error": "#ba1a1a",
+                        "border-subtle": "#E0E0E0",
+                        "on-secondary-fixed": "#370e00",
+                        "primary": "#000666",
+                        "on-primary-container": "#8690ee",
+                        "surface-dim": "#dcd9d9",
+                        "text-on-dark": "#E0E0E0",
+                        "on-tertiary-fixed-variant": "#433f7d",
+                        "secondary-container": "#fe7f48",
+                        "secondary-fixed-dim": "#ffb599",
+                        "primary-container": "#1a237e",
+                        "on-secondary-fixed-variant": "#7f2b00",
+                        "on-surface": "#1c1b1b",
+                        "surface-container": "#f0edec",
+                        "status-info": "#0288D1",
+                        "primary-fixed-dim": "#bdc2ff",
+                        "surface-variant": "#e5e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter-desktop": "24px",
+                        "margin-desktop": "40px",
+                        "container-max": "1280px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "gutter-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-on-background sticky top-0 w-full z-50 border-b border-outline-variant dark:border-outline flat no shadows flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">EduSelect</div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 h-full flex items-center mt-[2px]" href="#">Colleges</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Exams</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Admissions</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Q&amp;A</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Reviews</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 border border-outline-variant rounded-DEFAULT bg-surface-lowest text-body-sm font-body-sm focus:outline-none focus:ring-1 focus:ring-primary w-48" placeholder="Search..." type="text">
+</div>
+<button class="text-secondary hover:text-secondary-container transition-colors duration-200 font-label-md text-label-md hidden md:block">Compare</button>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-4 py-2 rounded-DEFAULT font-label-md text-label-md transition-colors duration-200 active:scale-95">Apply Now</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Header -->
+<div class="mb-12">
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-primary mb-2">Compare Colleges</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">Evaluate top institutions side-by-side. We've highlighted the standout metrics in each category to help you make an informed, data-driven decision.</p>
+</div>
+<!-- Comparison Table Container -->
+<div class="w-full overflow-x-auto pb-8 rounded-lg border border-outline-variant bg-surface-lowest shadow-[0px_4px_12px_rgba(0,0,0,0.02)]">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<!-- Table Head (Colleges Info) -->
+<thead>
+<tr class="border-b border-outline-variant">
+<th class="p-6 w-1/4 align-bottom bg-surface-container-low">
+<div class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Comparison Criteria</div>
+</th>
+<!-- College 1 -->
+<th class="p-6 w-1/4 border-l border-outline-variant align-top">
+<div class="relative w-full h-32 mb-4 rounded-DEFAULT overflow-hidden bg-surface-dim">
+<img alt="Campus" class="w-full h-full object-cover" data-alt="A modern university campus building during daytime, featuring brutalist concrete architecture combined with large glass facades. The lighting is bright and sunny, creating a clean, professional, and academic atmosphere. The scene aligns with a modern, high-tier educational institution aesthetic, utilizing natural light to highlight the structural geometry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz40cpgnjR33U8t8EpSzccDP4W8VGH0pzKayA50Lsj4KnmMAxBcWOK6dDPyKYnzS2K40kqN3VClnk05QyvojSKYoW2vIqxfgWjr_dnEFDmIqC667twTAHTlxY9SYhZWJlMzS7GWU7R2FhXvY9biNiiOn3VDQ4BBHo9dByumhTm0uLCS8SqgLJ1IihlOXZhCQS0c8IJc2O1Fsh7KM8-uMy9qh8gDEipCx3PNwch5uVBCeQac95tu0SN6ZBUK2ae084zJzhep0jhf5Dt">
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-1">National Institute of Technology</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Trichy, TN
+                            </p>
+<button class="w-full bg-surface-muted border border-outline-variant text-primary font-label-md text-label-md py-2 rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors">Apply Now</button>
+</th>
+<!-- College 2 -->
+<th class="p-6 w-1/4 border-l border-outline-variant align-top">
+<div class="relative w-full h-32 mb-4 rounded-DEFAULT overflow-hidden bg-surface-dim">
+<img alt="Campus" class="w-full h-full object-cover" data-alt="A historic collegiate gothic style building constructed from red brick and ornate stone detailing, surrounded by mature green trees. The setting is serene and authoritative, bathed in soft afternoon light that emphasizes tradition and academic excellence. The visual tone is warm, established, and distinctly collegiate, evoking a sense of prestige." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx7qa9AXxcPvypSo4eelBmvpvzNYQP3ZhxSg7CV59AdsvhL3zi-JJon5Ilf4LNIBANw4DNuqAGwW0Jf6eZSMMpCvcPTArFQX5FJ8fY-nVfsRP3sbYRMRajmbOljX2iqCRXULkJ3KUXB5j3MAgBP7S-rpNTVkcgAzdFDtimbUpXNR5Xl6FbPaAW3S5MFz5l_1WWWDS7PpvWgdMBC30-swXlenGoNIQAASiei364_JII-EcYFmXyMMZei_EcEINB-WQ8ME_kvtTXEMAk">
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-1">Birla Institute of Tech</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Pilani, RJ
+                            </p>
+<button class="w-full bg-surface-muted border border-outline-variant text-primary font-label-md text-label-md py-2 rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors">Apply Now</button>
+</th>
+<!-- College 3 -->
+<th class="p-6 w-1/4 border-l border-outline-variant align-top">
+<div class="relative w-full h-32 mb-4 rounded-DEFAULT overflow-hidden bg-surface-dim">
+<img alt="Campus" class="w-full h-full object-cover" data-alt="A sleek, futuristic university research center characterized by expansive curved glass panels and metallic framing. The environment is illuminated by cool, crisp daylight, suggesting innovation and advanced technological studies. The overall mood is progressive, clinical, and highly modern, fitting for a top-tier engineering or science academy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEj_62AXqWAq181uyhr6wrOxGfOadNrOOkLHnX_SwVeitvnUsxVOvlokfTkIybj0xxzXqMmY-qR7bUHcXOmHjvYtbvWTJrmlB7rM3pXRlZuq9ZxzfDAl7S4fVQFT5Kp876I-xNm956QWXUdenXauNL2zGLjX6IQh4dssjgm3UiF6Jouwb7jv8NyyZNkiMv4IkQ7b2XzznDSQahKM5TsHC--6N2WxOfBPcLkLnDQ24YSomim5fdlMpfRTomg1qoMXXQFZG3YuF0b0R-">
+</div>
+<h3 class="text-headline-md font-headline-md text-primary mb-1">Vellore Institute of Tech</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Vellore, TN
+                            </p>
+<button class="w-full bg-surface-muted border border-outline-variant text-primary font-label-md text-label-md py-2 rounded-DEFAULT hover:bg-primary hover:text-on-primary transition-colors">Apply Now</button>
+</th>
+</tr>
+</thead>
+<!-- Table Body (Data Rows) -->
+<tbody>
+<!-- Row: Fees -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+<td class="p-6 bg-surface-container-low border-r border-outline-variant">
+<div class="text-body-md font-body-md font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">payments</span>
+                                Total Fees (4 Years)
+                            </div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1">Tuition + Basic Hostel</div>
+</td>
+<!-- Col 1 -->
+<td class="p-6 border-r border-outline-variant">
+<div class="inline-flex items-center gap-2 bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-DEFAULT">
+<span class="text-body-md font-body-md font-semibold">₹ 8.5 Lakhs</span>
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</div>
+<div class="text-label-sm font-label-sm text-status-success mt-2">Lowest Fee</div>
+</td>
+<!-- Col 2 -->
+<td class="p-6 border-r border-outline-variant text-body-md font-body-md text-on-surface">
+                            ₹ 22.4 Lakhs
+                        </td>
+<!-- Col 3 -->
+<td class="p-6 text-body-md font-body-md text-on-surface">
+                            ₹ 19.8 Lakhs
+                        </td>
+</tr>
+<!-- Row: Highest Placement -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+<td class="p-6 bg-surface-container-low border-r border-outline-variant">
+<div class="text-body-md font-body-md font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">trending_up</span>
+                                Highest Package
+                            </div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1">Domestic Placement</div>
+</td>
+<td class="p-6 border-r border-outline-variant text-body-md font-body-md text-on-surface">
+                            ₹ 42.0 LPA
+                        </td>
+<td class="p-6 border-r border-outline-variant">
+<div class="inline-flex items-center gap-2 bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-DEFAULT">
+<span class="text-body-md font-body-md font-semibold">₹ 60.7 LPA</span>
+<span class="material-symbols-outlined text-[16px]">military_tech</span>
+</div>
+<div class="text-label-sm font-label-sm text-primary mt-2">Highest Recorded</div>
+</td>
+<td class="p-6 text-body-md font-body-md text-on-surface">
+                            ₹ 41.2 LPA
+                        </td>
+</tr>
+<!-- Row: Average Placement -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+<td class="p-6 bg-surface-container-low border-r border-outline-variant">
+<div class="text-body-md font-body-md font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">bar_chart</span>
+                                Average Package
+                            </div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1">Across all branches</div>
+</td>
+<td class="p-6 border-r border-outline-variant text-body-md font-body-md text-on-surface">
+                            ₹ 12.5 LPA
+                        </td>
+<td class="p-6 border-r border-outline-variant">
+<div class="inline-flex items-center gap-2 bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-DEFAULT">
+<span class="text-body-md font-body-md font-semibold">₹ 18.2 LPA</span>
+<span class="material-symbols-outlined text-[16px]">stars</span>
+</div>
+</td>
+<td class="p-6 text-body-md font-body-md text-on-surface">
+                            ₹ 9.2 LPA
+                        </td>
+</tr>
+<!-- Row: User Ratings -->
+<tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors">
+<td class="p-6 bg-surface-container-low border-r border-outline-variant">
+<div class="text-body-md font-body-md font-medium text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">star_rate</span>
+                                User Rating
+                            </div>
+<div class="text-body-sm font-body-sm text-on-surface-variant mt-1">Based on student reviews</div>
+</td>
+<td class="p-6 border-r border-outline-variant">
+<div class="flex items-center gap-1 text-secondary mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star_half</span>
+</div>
+<div class="text-body-md font-body-md text-on-surface font-semibold">4.3 / 5</div>
+</td>
+<td class="p-6 border-r border-outline-variant">
+<div class="inline-flex flex-col">
+<div class="flex items-center gap-1 text-secondary mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-body-md font-body-md text-on-surface font-semibold">4.6 / 5</span>
+<span class="bg-primary-fixed text-primary text-label-sm font-label-sm px-2 py-0.5 rounded-DEFAULT">Top Rated</span>
+</div>
+</div>
+</td>
+<td class="p-6 text-body-md font-body-md text-on-surface">
+<div class="flex items-center gap-1 text-secondary mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star_outline</span>
+</div>
+<div class="text-body-md font-body-md text-on-surface font-semibold">4.1 / 5</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-inverse-surface w-full py-12 border-t border-outline-variant dark:border-outline flat no shadows text-on-surface dark:text-inverse-on-surface">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-desktop max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col gap-4">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">EduSelect</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Empowering students to make data-driven decisions for their academic future.</p>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="text-label-md font-label-md font-semibold mb-2">Platform</h4>
+<a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">About Us</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Scholarships</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="text-label-md font-label-md font-semibold mb-2">Support</h4>
+<a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Contact Support</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Student Forum</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="text-label-md font-label-md font-semibold mb-2">Legal</h4>
+<a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-12 pt-8 border-t border-outline-variant dark:border-outline">
+<p class="text-label-sm font-label-sm text-on-surface-variant text-center">© 2024 EduSelect College Discovery Platform. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Dashboard - EduSelect</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#e3dfff", "surface-dim": "#dcd9d9", "surface-bright": "#fcf9f8",
+                        "primary-fixed": "#e0e0ff", "surface-tint": "#4c56af", "outline-variant": "#c6c5d4",
+                        "border-subtle": "#E0E0E0", "surface-container-low": "#f6f3f2", "surface-muted": "#F2F2F8",
+                        "surface-container": "#f0edec", "status-info": "#0288D1", "on-primary-fixed": "#000767",
+                        "error": "#ba1a1a", "background": "#fcf9f8", "surface-variant": "#e5e2e1",
+                        "inverse-primary": "#bdc2ff", "secondary-fixed-dim": "#ffb599", "text-on-dark": "#E0E0E0",
+                        "on-tertiary": "#ffffff", "on-secondary-container": "#692200", "on-secondary": "#ffffff",
+                        "secondary-container": "#fe7f48", "on-error": "#ffffff", "on-surface": "#1c1b1b",
+                        "surface-container-highest": "#e5e2e1", "on-background": "#1c1b1b", "on-surface-variant": "#454652",
+                        "primary": "#000666", "secondary-fixed": "#ffdbce", "on-tertiary-fixed": "#17104f",
+                        "primary-fixed-dim": "#bdc2ff", "on-tertiary-fixed-variant": "#433f7d", "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#9590d4", "on-secondary-fixed-variant": "#7f2b00", "primary-container": "#1a237e",
+                        "tertiary": "#16104e", "error-container": "#ffdad6", "tertiary-container": "#2c2764",
+                        "on-error-container": "#93000a", "surface-container-high": "#ebe7e7", "status-success": "#2E7D32",
+                        "inverse-on-surface": "#f3f0ef", "surface": "#fcf9f8", "secondary": "#a43d07",
+                        "on-primary-fixed-variant": "#343d96", "on-primary": "#ffffff", "inverse-surface": "#313030",
+                        "tertiary-fixed-dim": "#c5c0ff", "on-primary-container": "#8690ee", "outline": "#767683",
+                        "on-secondary-fixed": "#370e00"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"
+                    },
+                    spacing: {
+                        "margin-desktop": "40px", "gutter-mobile": "16px", "container-max": "1280px",
+                        "margin-mobile": "20px", "base": "8px", "gutter-desktop": "24px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Hanken Grotesk"], "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"], "display-lg": ["Hanken Grotesk"], "label-sm": ["Inter"],
+                        "body-sm": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"], "headline-md": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface sticky top-0 w-full z-50 border-b border-outline-variant flat no shadows">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="text-headline-md font-headline-md font-bold text-primary">
+                EduSelect
+            </div>
+<!-- Navigation Links (None active for dashboard context) -->
+<ul class="hidden md:flex gap-gutter-desktop">
+<li><a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Colleges</a></li>
+<li><a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Exams</a></li>
+<li><a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Admissions</a></li>
+<li><a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Q&amp;A</a></li>
+<li><a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Reviews</a></li>
+</ul>
+<!-- Actions -->
+<div class="flex items-center gap-base">
+<button class="px-4 py-2 border border-primary text-primary rounded text-label-md font-label-md hover:bg-surface-muted transition-colors">Compare</button>
+<button class="px-4 py-2 bg-secondary text-on-secondary rounded text-label-md font-label-md hover:opacity-90 transition-opacity">Apply Now</button>
+<!-- User Avatar -->
+<div class="ml-4 w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+                    JS
+                </div>
+</div>
+</div>
+</nav>
+<!-- Main Dashboard Layout -->
+<div class="flex-1 flex max-w-container-max mx-auto w-full px-margin-desktop py-gutter-desktop gap-gutter-desktop">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex-shrink-0 flex flex-col gap-base border-r border-border-subtle pr-gutter-desktop hidden md:flex">
+<h2 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider mb-2">My Dashboard</h2>
+<!-- Active State -->
+<a class="flex items-center gap-2 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg text-label-md font-label-md font-bold" href="#">
+<span class="material-symbols-outlined filled">bookmark</span>
+                Saved Colleges
+            </a>
+<a class="flex items-center gap-2 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface rounded-lg text-label-md font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">compare_arrows</span>
+                Saved Comparisons
+            </a>
+<a class="flex items-center gap-2 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface rounded-lg text-label-md font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+                My Activity
+            </a>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col gap-margin-desktop pb-margin-desktop">
+<!-- Header section -->
+<div class="flex justify-between items-end border-b border-border-subtle pb-4">
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-2">Saved Colleges</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Manage and review your bookmarked institutions.</p>
+</div>
+<button class="text-label-md font-label-md text-primary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                </button>
+</div>
+<!-- Saved Colleges Grid (Bento-inspired, refined cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-desktop">
+<!-- Card 1 -->
+<div class="bg-surface border border-border-subtle rounded-lg overflow-hidden group hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all flex flex-col">
+<div class="relative w-full aspect-square bg-surface-muted overflow-hidden">
+<img alt="College Campus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A bright, sunlit architectural shot of a modern university campus building made of glass and clean stone. The scene is photographed with high-key lighting, emphasizing a clean, corporate academic aesthetic. Subtle hints of deep indigo sky contrast with the pristine white structures. The mood is aspirational and highly structured." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg81y3AX4uSIsy6X1lj93Olvi5AommGWduqWEIwEuPOcTXRGggGBcrZYW0kzBOch3GHBKFtliLa7MdoW80OD9xHOxrL9DrcnLxzZiT-bOKPZ90SriYbC83geFSIZWzcFUpY4ds6UbiNASeU_rwbI3RfsceN-Dp9KSYEkJgrQKIKBYc5PCSVZR6jwRihWuBUZ0k4mPYsZ_pAFtyEdqhj6RgruHKeUj8CYTvBUgJO3fl-zCIXl1Y5nE-1SAoAKWFGmT89fctTRkfZEvI">
+<button class="absolute top-3 right-3 w-8 h-8 bg-surface rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary filled text-[20px]">bookmark</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1 gap-3">
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-muted text-primary text-label-sm font-label-sm rounded">#1 Engineering</span>
+<span class="px-2 py-1 bg-surface-muted text-primary text-label-sm font-label-sm rounded">Private</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface line-clamp-1">Stanford Institute of Tech</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Palo Alto, CA
+                            </p>
+</div>
+<div class="mt-auto pt-4 flex justify-between items-center border-t border-border-subtle">
+<div class="text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Avg Fee: </span>
+<span class="text-on-surface font-semibold">$55,000/yr</span>
+</div>
+<button class="text-primary text-label-md font-label-md hover:underline">Details</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface border border-border-subtle rounded-lg overflow-hidden group hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all flex flex-col">
+<div class="relative w-full aspect-square bg-surface-muted overflow-hidden">
+<img alt="College Campus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sweeping view of a classic brick university library building across a perfectly manicured green quad. The image has a clean, professional tone with high clarity and contrast. The sky is clear, allowing natural light to cast structural shadows. The aesthetic is authoritative and traditional academic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTUkoy-oc_piOklQ-MO1kyQosWPuJNL1oolHrcqGJI0Pjti-cVLTnRB5Q7fTX4CEK4tmWBFngWMnQlegXPv5Wqe9muXcMh0RQ4xN5phXsPdPugriE_WC_DtgC0KX9GXmV5SWY5rk7lNVGqUKeG8xLIQ_dQXDxQTnsh-z3ZLNXgVna_Q47iIklkyk0HYdI-djH2ZTSqUF-r9YBqq5IjvCoX3RYi24_U0RrTrm5jtuQXNtjsoxAZeiFHpPoLbMFRD-qAV9nZUp8NCbZV">
+<button class="absolute top-3 right-3 w-8 h-8 bg-surface rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary filled text-[20px]">bookmark</span>
+</button>
+</div>
+<div class="p-4 flex flex-col flex-1 gap-3">
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-muted text-primary text-label-sm font-label-sm rounded">Top 10 Global</span>
+<span class="px-2 py-1 bg-surface-muted text-primary text-label-sm font-label-sm rounded">Public</span>
+</div>
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface line-clamp-1">University of Michigan</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Ann Arbor, MI
+                            </p>
+</div>
+<div class="mt-auto pt-4 flex justify-between items-center border-t border-border-subtle">
+<div class="text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Avg Fee: </span>
+<span class="text-on-surface font-semibold">$32,000/yr</span>
+</div>
+<button class="text-primary text-label-md font-label-md hover:underline">Details</button>
+</div>
+</div>
+</div>
+<!-- Add New Action Card -->
+<a class="bg-surface-container-low border border-dashed border-outline rounded-lg flex flex-col items-center justify-center gap-3 text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors min-h-[300px]" href="#">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">add</span>
+</div>
+<span class="text-label-md font-label-md">Discover More Colleges</span>
+</a>
+</div>
+<!-- Saved Comparisons Section -->
+<div class="mt-8">
+<div class="flex justify-between items-end border-b border-border-subtle pb-4 mb-6">
+<h2 class="text-headline-md font-headline-md text-on-surface">Recent Comparisons</h2>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Comparison Row 1 -->
+<div class="bg-surface border border-border-subtle rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-muted flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">table_chart</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Stanford IT vs. MIT</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Saved 2 days ago • Engineering Programs</p>
+</div>
+</div>
+<button class="px-4 py-2 bg-primary text-on-primary rounded text-label-md font-label-md flex items-center gap-2 hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">launch</span> Relaunch Matrix
+                        </button>
+</div>
+<!-- Comparison Row 2 -->
+<div class="bg-surface border border-border-subtle rounded-lg p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-muted flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">table_chart</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md text-on-surface">Top Public Universities CA</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Saved 1 week ago • Fee Structure</p>
+</div>
+</div>
+<button class="px-4 py-2 border border-primary text-primary rounded text-label-md font-label-md flex items-center gap-2 hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined text-[18px]">launch</span> Relaunch Matrix
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant w-full py-12 flat no shadows mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-desktop max-w-container-max mx-auto px-margin-desktop">
+<!-- Brand -->
+<div class="col-span-1">
+<div class="text-headline-md font-headline-md font-bold text-primary mb-4">
+                    EduSelect
+                </div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                    © 2024 EduSelect College Discovery Platform. All rights reserved.
+                </p>
+</div>
+<!-- Links -->
+<div class="col-span-1 lg:col-span-3 flex flex-wrap gap-8 justify-end">
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary rounded" href="#">About Us</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary rounded" href="#">Contact Support</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary rounded" href="#">Privacy Policy</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary rounded" href="#">Scholarships</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary rounded" href="#">Student Forum</a>
+</div>
+</div>
+</footer>
+</body></html>

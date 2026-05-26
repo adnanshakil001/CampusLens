@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EduSelect - College Predictor</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config from Design System -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed": "#e3dfff", "surface-dim": "#dcd9d9", "surface-bright": "#fcf9f8", "primary-fixed": "#e0e0ff", "surface-tint": "#4c56af", "outline-variant": "#c6c5d4", "border-subtle": "#E0E0E0", "surface-container-low": "#f6f3f2", "surface-muted": "#F2F2F8", "surface-container": "#f0edec", "status-info": "#0288D1", "on-primary-fixed": "#000767", "error": "#ba1a1a", "background": "#fcf9f8", "surface-variant": "#e5e2e1", "inverse-primary": "#bdc2ff", "secondary-fixed-dim": "#ffb599", "text-on-dark": "#E0E0E0", "on-tertiary": "#ffffff", "on-secondary-container": "#692200", "on-secondary": "#ffffff", "secondary-container": "#fe7f48", "on-error": "#ffffff", "on-surface": "#1c1b1b", "surface-container-highest": "#e5e2e1", "on-background": "#1c1b1b", "on-surface-variant": "#454652", "primary": "#000666", "secondary-fixed": "#ffdbce", "on-tertiary-fixed": "#17104f", "primary-fixed-dim": "#bdc2ff", "on-tertiary-fixed-variant": "#433f7d", "surface-container-lowest": "#ffffff", "on-tertiary-container": "#9590d4", "on-secondary-fixed-variant": "#7f2b00", "primary-container": "#1a237e", "tertiary": "#16104e", "error-container": "#ffdad6", "tertiary-container": "#2c2764", "on-error-container": "#93000a", "surface-container-high": "#ebe7e7", "status-success": "#2E7D32", "inverse-on-surface": "#f3f0ef", "surface": "#fcf9f8", "secondary": "#a43d07", "on-primary-fixed-variant": "#343d96", "on-primary": "#ffffff", "inverse-surface": "#313030", "tertiary-fixed-dim": "#c5c0ff", "on-primary-container": "#8690ee", "outline": "#767683", "on-secondary-fixed": "#370e00"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"
+                    },
+                    spacing: {
+                        "margin-desktop": "40px", "gutter-mobile": "16px", "container-max": "1280px", "margin-mobile": "20px", base: "8px", "gutter-desktop": "24px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Hanken Grotesk"], "headline-lg": ["Hanken Grotesk"], "body-md": ["Inter"], "display-lg": ["Hanken Grotesk"], "label-sm": ["Inter"], "body-sm": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"], "headline-md": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" }], "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }], "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface sticky top-0 w-full z-50 border-b border-outline-variant flat no shadows">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="flex items-center gap-6">
+<a class="text-headline-md font-headline-md font-bold text-primary" href="#">EduSelect</a>
+<!-- Search -->
+<div class="hidden md:flex relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 border border-border-subtle rounded-lg bg-surface-container-lowest text-body-sm font-body-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none w-64 transition-all" placeholder="Search colleges, exams..." type="text">
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Colleges</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Exams</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 scale-95 transition-transform duration-150" href="#">Admissions</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Q&amp;A</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200" href="#">Reviews</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-4 py-2 rounded border border-primary text-primary font-label-md hover:bg-primary-fixed transition-colors">Compare</button>
+<button class="px-4 py-2 rounded bg-secondary text-on-secondary font-label-md hover:bg-secondary-container transition-colors shadow-sm">Apply Now</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow py-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full flex flex-col gap-16">
+<!-- Predictor Card Section -->
+<section class="flex justify-center w-full mt-8">
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl p-8 md:p-10 w-full max-w-2xl shadow-[0_4px_24px_rgba(0,0,0,0.03)] relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary-container to-secondary-container"></div>
+<div class="text-center mb-8">
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-2">College Predictor</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Enter your exam details to discover your chances at top institutions.</p>
+</div>
+<form class="space-y-6" id="predictorForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Exam Dropdown -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface" for="exam">Exam Name</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface border border-border-subtle rounded text-body-md font-body-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow cursor-pointer text-on-surface" id="exam">
+<option disabled="" selected="" value="">Select an Exam</option>
+<option value="jee_main">JEE Main</option>
+<option value="jee_advanced">JEE Advanced</option>
+<option value="neet">NEET UG</option>
+<option value="cuet">CUET</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Rank/Score Input -->
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface" for="score">Rank / Percentile</label>
+<input class="w-full bg-surface border border-border-subtle rounded text-body-md font-body-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-shadow text-on-surface" id="score" placeholder="e.g. 98.5" type="number">
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface">Preferred Category (Optional)</label>
+<div class="flex flex-wrap gap-2 mt-1">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="category" type="radio">
+<span class="px-3 py-1.5 rounded border border-border-subtle text-label-sm font-label-sm text-on-surface-variant peer-checked:bg-primary-fixed peer-checked:text-on-primary-fixed peer-checked:border-primary transition-colors">General</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="category" type="radio">
+<span class="px-3 py-1.5 rounded border border-border-subtle text-label-sm font-label-sm text-on-surface-variant peer-checked:bg-primary-fixed peer-checked:text-on-primary-fixed peer-checked:border-primary transition-colors">OBC-NCL</span>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="category" type="radio">
+<span class="px-3 py-1.5 rounded border border-border-subtle text-label-sm font-label-sm text-on-surface-variant peer-checked:bg-primary-fixed peer-checked:text-on-primary-fixed peer-checked:border-primary transition-colors">SC/ST</span>
+</label>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full py-4 rounded bg-primary text-on-primary text-label-md font-label-md tracking-wide hover:bg-primary-container transition-all duration-300 shadow-[0_0_15px_rgba(0,6,102,0.3)] hover:shadow-[0_0_20px_rgba(0,6,102,0.5)] flex items-center justify-center gap-2" onclick="showResults()" type="button">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                            Predict Recommended Colleges
+                        </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Results Section (Hidden by default, shown via JS) -->
+<section class="hidden flex-col gap-8 opacity-0 transition-opacity duration-500" id="resultsSection">
+<div class="flex items-center justify-between border-b border-border-subtle pb-4">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Your Matches</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Based on JEE Main (Estimated Rank: 15,200)</p>
+</div>
+<div class="hidden sm:flex gap-2">
+<span class="px-3 py-1 bg-surface-muted text-primary rounded-full text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">tune</span> Filter
+                    </span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter-desktop">
+<!-- Result Card 1 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl overflow-hidden group hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col cursor-pointer">
+<div class="h-32 bg-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="University Campus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A modern university campus building during daytime, featuring brutalist architecture with large glass windows and geometric concrete facades. The sky is bright blue and clear. Lush green trees frame the bottom of the structure, adding a touch of nature to the academic setting. The aesthetic is professional, modern, and aligned with a corporate educational platform in light mode." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrkJXaS_4Ppm-c76LQBi8Fv4EJBkkI5tV8msjrKT-RHsfchIu52IdVVbloYOIYWTWDtKrnCkqfYUmEo-FbL2hyKA1SngvbTeMS3CWJ2DIhAmDkoKzUzNGC_ky0pG59n5YakPBRWRTMtVUGGcCS69sW2K5xbhf0INo9ddLmLRMspbOJ8TrrcCzBHXaunEMp6ciSGyyOLpMPB-mvGvOSdpFnC9BaX5P2Ce85zFROJ36sUQ8qykW42qdESrNRLe1YaORiZgIXnKwvGQOl">
+<div class="absolute bottom-3 left-4 z-20 flex gap-2">
+<span class="bg-status-success text-on-primary px-2 py-0.5 rounded text-[10px] font-label-sm font-bold uppercase tracking-wider">High Probability</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-label-md font-label-md text-on-surface leading-tight">National Institute of Technology, Trichy</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Tamil Nadu
+                        </p>
+<div class="mt-auto grid grid-cols-2 gap-2 border-t border-border-subtle pt-3">
+<div>
+<span class="block text-[10px] text-outline uppercase tracking-wide">Avg Fee/Yr</span>
+<span class="text-label-sm font-label-sm text-on-surface">₹1.4 L</span>
+</div>
+<div>
+<span class="block text-[10px] text-outline uppercase tracking-wide">Closing Rank (Est)</span>
+<span class="text-label-sm font-label-sm text-primary">16,500</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Result Card 2 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl overflow-hidden group hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col cursor-pointer">
+<div class="h-32 bg-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="College Library" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An impressive, expansive academic library interior. Tall wooden bookshelves filled with colorful books line the walls. Students are seated at long oak tables reading under warm reading lamps. Large gothic-style windows let in natural daylight. The overall mood is quiet, studious, and deeply intellectual, fitting an authoritative educational discovery platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV6mOGEoZ5X_0PZExzfcGZgJv8Rlezo1bjZLDdCtEO7OuG_gIeOYTEfzv2Oe6SUvOyhA3Si4VJudWewbe0jGnS4Gz2rCiVtADyuvW0385grvLyjzjwO6uw-TZU79CJ4z6oU6LPTrkPnGC3VlBOgKaI1GA6oMwDpsBWLhwIGQL-uQsTGKZ1LkPURNf4Dk7OUeTBCHcKsR5i7Y-zZUwCakxwBC-GqimlDDxPYZ4OpnQwr2O0r9UojxRyAqNB7xqO_3qudExswfXihC0Q">
+<div class="absolute bottom-3 left-4 z-20 flex gap-2">
+<span class="bg-status-success text-on-primary px-2 py-0.5 rounded text-[10px] font-label-sm font-bold uppercase tracking-wider">High Probability</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-label-md font-label-md text-on-surface leading-tight">Delhi Technological University</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px]">location_on</span> New Delhi
+                        </p>
+<div class="mt-auto grid grid-cols-2 gap-2 border-t border-border-subtle pt-3">
+<div>
+<span class="block text-[10px] text-outline uppercase tracking-wide">Avg Fee/Yr</span>
+<span class="text-label-sm font-label-sm text-on-surface">₹2.1 L</span>
+</div>
+<div>
+<span class="block text-[10px] text-outline uppercase tracking-wide">Closing Rank (Est)</span>
+<span class="text-label-sm font-label-sm text-primary">14,800</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Result Card 3 -->
+<div class="bg-surface-container-lowest border border-border-subtle rounded-xl overflow-hidden group hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col cursor-pointer">
+<div class="h-32 bg-surface-variant relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<img alt="Campus pathway" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A serene, tree-lined pathway winding through a modern university campus. Students are walking casually with backpacks. The architecture in the background features clean lines, white concrete, and large glass panes, indicative of an engineering or science building. Sunlight filters through the leaves creating dappled shadows on the pavement. The aesthetic is clean, minimal, and aspirational." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTriKN-33OPvyb6YvBdzn3XmO0iGgzCOfy_d6Xkh7_wJu2Jajv-X-srxY3V57T_MBoqrHi0w8u6cGSFKhpEM1ztyl4OKsTTj6fmFsSgS6C9yffv2vNzA0mzKEeeGy786rdEVMDc3OKKCq3OrNf1IQPmaX43MsRlSp7uLF01OQoGxXSUxE6k8yy8je3NMBBrTqfiPKmEItucOkGSSJZ24f7QhbRKvgRJ8Y8Y9BfnA1_sOAZrCidexNYX4DnbuPWJyQIjUSXtKzjG1gc">
+<div class="absolute bottom-3 left-4 z-20 flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded text-[10px] font-label-sm font-bold uppercase tracking-wider">Borderline</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-label-md font-label-md text-on-surface leading-tight">IIIT Hyderabad</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Telangana
+                        </p>
+<div class="mt-auto grid grid-cols-2 gap-2 border-t border-border-subtle pt-3">
+<div>
+<span class="block text-[10px] text-outline uppercase tracking-wide">Avg Fee/Yr</span>
+<span class="text-label-sm font-label-sm text-on-surface">₹3.5 L</span>
+</div>
+<div>
+<span class="block text-[10px] text-outline uppercase tracking-wide">Closing Rank (Est)</span>
+<span class="text-label-sm font-label-sm text-primary">12,000</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-4">
+<button class="px-6 py-2 border border-outline-variant rounded text-on-surface font-label-md hover:bg-surface-muted transition-colors">Load More Matches</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container w-full py-12 border-t border-outline-variant flat no shadows mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-desktop max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col gap-4">
+<span class="text-headline-md font-headline-md font-bold text-primary">EduSelect</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-xs">Empowering students to make data-driven decisions for their academic future through comprehensive analytics and insights.</p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-md font-label-md text-on-surface font-semibold mb-1">Platform</span>
+<a class="text-on-surface-variant text-body-sm font-body-sm hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary w-fit" href="#">About Us</a>
+<a class="text-on-surface-variant text-body-sm font-body-sm hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary w-fit" href="#">Contact Support</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-md font-label-md text-on-surface font-semibold mb-1">Resources</span>
+<a class="text-on-surface-variant text-body-sm font-body-sm hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary w-fit" href="#">Scholarships</a>
+<a class="text-on-surface-variant text-body-sm font-body-sm hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary w-fit" href="#">Student Forum</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-label-md font-label-md text-on-surface font-semibold mb-1">Legal</span>
+<a class="text-on-surface-variant text-body-sm font-body-sm hover:text-secondary underline transition-all focus:outline-none focus:ring-2 focus:ring-primary w-fit" href="#">Privacy Policy</a>
+</div>
+<div class="col-span-1 md:col-span-2 lg:col-span-4 mt-8 pt-8 border-t border-outline-variant/50 text-center">
+<p class="text-body-sm font-body-sm text-on-surface-variant">© 2024 EduSelect College Discovery Platform. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        function showResults() {
+            const btn = document.querySelector('button[onclick="showResults()"]');
+            const originalText = btn.innerHTML;
+            
+            // Loading state
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Predicting...';
+            btn.disabled = true;
+            btn.classList.add('opacity-80');
+
+            setTimeout(() => {
+                // Restore button
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.classList.remove('opacity-80');
+                
+                // Show results section
+                const results = document.getElementById('resultsSection');
+                results.classList.remove('hidden');
+                // Small delay to allow display:block to apply before animating opacity
+                setTimeout(() => {
+                    results.classList.remove('opacity-0');
+                    // Scroll smoothly to results
+                    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            }, 1200); // Fake processing time
+        }
+    </script>
+</body></html>

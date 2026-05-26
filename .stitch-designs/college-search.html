@@ -1,0 +1,576 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>EduSelect - College Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#1c1b1b",
+                      "surface": "#fcf9f8",
+                      "inverse-surface": "#313030",
+                      "on-error-container": "#93000a",
+                      "status-success": "#2E7D32",
+                      "tertiary": "#16104e",
+                      "on-tertiary-fixed": "#17104f",
+                      "on-surface-variant": "#454652",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#fcf9f8",
+                      "inverse-on-surface": "#f3f0ef",
+                      "inverse-primary": "#bdc2ff",
+                      "on-secondary-container": "#692200",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#9590d4",
+                      "tertiary-container": "#2c2764",
+                      "outline": "#767683",
+                      "surface-muted": "#F2F2F8",
+                      "tertiary-fixed-dim": "#c5c0ff",
+                      "background": "#fcf9f8",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#e3dfff",
+                      "secondary": "#a43d07",
+                      "surface-container-high": "#ebe7e7",
+                      "surface-container-low": "#f6f3f2",
+                      "outline-variant": "#c6c5d4",
+                      "secondary-fixed": "#ffdbce",
+                      "primary-fixed": "#e0e0ff",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#4c56af",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#000767",
+                      "on-primary-fixed-variant": "#343d96",
+                      "error": "#ba1a1a",
+                      "border-subtle": "#E0E0E0",
+                      "on-secondary-fixed": "#370e00",
+                      "primary": "#000666",
+                      "on-primary-container": "#8690ee",
+                      "surface-dim": "#dcd9d9",
+                      "text-on-dark": "#E0E0E0",
+                      "on-tertiary-fixed-variant": "#433f7d",
+                      "secondary-container": "#fe7f48",
+                      "secondary-fixed-dim": "#ffb599",
+                      "primary-container": "#1a237e",
+                      "on-secondary-fixed-variant": "#7f2b00",
+                      "on-surface": "#1c1b1b",
+                      "surface-container": "#f0edec",
+                      "status-info": "#0288D1",
+                      "primary-fixed-dim": "#bdc2ff",
+                      "surface-variant": "#e5e2e1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter-desktop": "24px",
+                      "margin-desktop": "40px",
+                      "container-max": "1280px",
+                      "base": "8px",
+                      "margin-mobile": "20px",
+                      "gutter-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-on-background sticky top-0 w-full z-50 border-b border-outline-variant dark:border-outline">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<!-- Brand Logo -->
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary">
+                    EduSelect
+                </div>
+<!-- Search Bar (on_left) -->
+<div class="hidden lg:flex items-center bg-surface-container-low border border-border-subtle rounded px-4 py-2 w-80 focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent transition-all">
+<span class="material-symbols-outlined text-outline mr-2" style="font-size: 20px;">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-sm text-body-sm text-on-surface placeholder:text-outline p-0" placeholder="Search colleges, exams..." type="text">
+</div>
+</div>
+<!-- Navigation Links -->
+<ul class="hidden md:flex items-center gap-8 h-full">
+<li class="h-full flex items-center">
+<a class="text-primary dark:text-inverse-primary font-bold border-b-2 border-primary dark:border-inverse-primary pb-1 h-full flex items-center hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Colleges</a>
+</li>
+<li class="h-full flex items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Exams</a>
+</li>
+<li class="h-full flex items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Admissions</a>
+</li>
+<li class="h-full flex items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Q&amp;A</a>
+</li>
+<li class="h-full flex items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-secondary dark:hover:text-secondary-fixed transition-colors duration-200" href="#">Reviews</a>
+</li>
+</ul>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="hidden md:inline-flex items-center justify-center font-label-md text-label-md border border-primary text-primary px-4 py-2 rounded hover:bg-primary-fixed hover:text-on-primary-fixed transition-colors">
+<span class="material-symbols-outlined mr-2" style="font-size: 18px;">compare_arrows</span>
+                    Compare
+                </button>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+                    Apply Now
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-gutter-desktop grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop min-h-screen">
+<!-- Sidebar Filters -->
+<aside class="lg:col-span-3 space-y-8">
+<div class="bg-surface border border-border-subtle rounded-lg p-6">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 border-b border-border-subtle pb-4">Filters</h2>
+<!-- Location Filter -->
+<div class="mb-8">
+<h3 class="font-label-md text-label-md text-on-surface mb-3 flex items-center justify-between">
+                        Location
+                        <span class="material-symbols-outlined text-outline" style="font-size: 18px;">expand_more</span>
+</h3>
+<div class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox">
+<span class="group-hover:text-primary transition-colors">New York, NY</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox">
+<span class="group-hover:text-primary transition-colors">Boston, MA</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox">
+<span class="group-hover:text-primary transition-colors">Chicago, IL</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-outline text-primary focus:ring-primary w-4 h-4" type="checkbox">
+<span class="group-hover:text-primary transition-colors">San Francisco, CA</span>
+</label>
+<a class="text-primary font-label-sm text-label-sm mt-2 inline-block" href="#">View all locations</a>
+</div>
+</div>
+<!-- Fees Range -->
+<div class="mb-8">
+<h3 class="font-label-md text-label-md text-on-surface mb-3 flex items-center justify-between">
+                        Average Annual Fees
+                        <span class="material-symbols-outlined text-outline" style="font-size: 18px;">expand_more</span>
+</h3>
+<div class="px-2">
+<input class="w-full h-1 bg-surface-dim rounded-lg appearance-none cursor-pointer accent-primary" max="80000" min="10000" type="range" value="45000">
+<div class="flex justify-between mt-2 font-body-sm text-body-sm text-on-surface-variant">
+<span>$10k</span>
+<span class="font-label-md text-primary">$45k</span>
+<span>$80k+</span>
+</div>
+</div>
+</div>
+<!-- Rating -->
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-3 flex items-center justify-between">
+                        Minimum Rating
+                        <span class="material-symbols-outlined text-outline" style="font-size: 18px;">expand_more</span>
+</h3>
+<div class="space-y-3 font-body-sm text-body-sm text-on-surface-variant">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="border-outline text-primary focus:ring-primary w-4 h-4" name="rating" type="radio">
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="ml-2 text-on-surface-variant">5.0</span>
+</div>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="border-outline text-primary focus:ring-primary w-4 h-4" name="rating" type="radio">
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined text-surface-dim" style="font-size: 18px;">star</span>
+<span class="ml-2 text-on-surface-variant">4.0 &amp; up</span>
+</div>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="border-outline text-primary focus:ring-primary w-4 h-4" name="rating" type="radio">
+<div class="flex items-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 18px;">star</span>
+<span class="material-symbols-outlined text-surface-dim" style="font-size: 18px;">star</span>
+<span class="material-symbols-outlined text-surface-dim" style="font-size: 18px;">star</span>
+<span class="ml-2 text-on-surface-variant">3.0 &amp; up</span>
+</div>
+</label>
+</div>
+</div>
+<button class="w-full mt-8 font-label-md text-label-md border border-border-subtle text-on-surface bg-surface-muted px-4 py-2 rounded hover:bg-surface-dim transition-colors">
+                    Clear Filters
+                </button>
+</div>
+</aside>
+<!-- College Cards Grid -->
+<section class="lg:col-span-9">
+<!-- Sorting & Meta -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+<p class="font-body-md text-body-md text-on-surface-variant">Showing <span class="font-bold text-on-surface">1-12</span> of 342 Colleges</p>
+<div class="flex items-center gap-4">
+<div class="flex items-center border border-border-subtle rounded bg-surface px-3 py-1.5 cursor-pointer hover:bg-surface-muted transition-colors">
+<span class="font-label-sm text-label-sm text-outline mr-2">Sort by:</span>
+<span class="font-label-md text-label-md text-on-surface mr-1">Rank (Highest)</span>
+<span class="material-symbols-outlined text-outline" style="font-size: 16px;">keyboard_arrow_down</span>
+</div>
+<div class="flex gap-1">
+<button class="p-1.5 rounded bg-surface-muted text-primary border border-border-subtle">
+<span class="material-symbols-outlined" style="font-size: 20px;">grid_view</span>
+</button>
+<button class="p-1.5 rounded bg-surface text-outline border border-border-subtle hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">view_list</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Grid Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-desktop">
+<!-- Card 1 -->
+<article class="bg-surface border border-border-subtle rounded-lg overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col group">
+<div class="relative h-48 w-full bg-surface-dim overflow-hidden">
+<img alt="University Campus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A striking architectural photograph of a modern university campus building during golden hour. The building features extensive glass facades reflecting the warm, soft light, contrasting with solid, brutalist concrete elements. The setting is academic and inspiring, with lush green lawns in the foreground. The visual style aligns with a pristine, modern light-mode interface, utilizing a palette of subtle grays, crisp whites, and vibrant nature greens to evoke a sense of authoritative and progressive education." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCExxACeG8C_tun2a3TG2qhvihadj11mSKZnRg2XCo5i5dVz2PLq3gkfyZ5olRgVExxzWO8pBuMTGZSj7VuyPuuieRZDOTnJ9fL7xgnAY236fG5WSXTXnhexuV0VYI6R9NjcNzb-1m4mreQAHxNHeBYTU-foaxHDcTKu8BtXbJjXoy0M0pl50qo6xdwQhMNXYkV2DKmpliRdIOQ2HtILZNCI0FQ5evLn5glDapcDD_VCL0_UP5Rz5TAc2N3Xz6g0cWfXFYZX1Ek7er7">
+<div class="absolute top-3 left-3 bg-surface text-primary font-label-sm text-label-sm px-2 py-1 rounded shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            Top 10 Ranked
+                        </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Northeastern Vanguard University</h3>
+<div class="flex items-center bg-status-success/10 text-status-success px-2 py-0.5 rounded font-label-sm text-label-sm gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span>
+                                4.9
+                            </div>
+</div>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>
+                            Boston, Massachusetts
+                        </p>
+<div class="grid grid-cols-2 gap-4 mb-6 border-t border-border-subtle pt-4 mt-auto">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Avg. Fees</p>
+<p class="font-label-md text-label-md text-on-surface">$52,400 / yr</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Acceptance</p>
+<p class="font-label-md text-label-md text-on-surface">18%</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-grow font-label-md text-label-md border border-border-subtle text-on-surface-variant py-2 rounded hover:text-primary hover:border-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                                Add to Compare
+                            </button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-outline hover:text-secondary hover:border-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">favorite_border</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface border border-border-subtle rounded-lg overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col group">
+<div class="relative h-48 w-full bg-surface-dim overflow-hidden">
+<img alt="Historic College Building" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A serene photograph of a historic, ivy-covered college building under a clear, bright blue sky. The classic red brick architecture conveys prestige, tradition, and academic rigor. Soft, diffused daylight illuminates the scene, enhancing the calm, authoritative mood. The visual aesthetic is clean and professional, perfectly suited for a high-end educational platform's light-mode design, using natural tones of brick red, lush green, and airy whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-stmezl7GaB2VUDnbs-qdDxC9pzWtmE6icKY0csVCDJ7TY2H3U0jA_xOga1dRgeq9Y0iudG0Z0OeGLX2XvJqlDLg0RvluNxM-ljtCsD-fN-XiN0G7i_VEZSpNeJLRjtWtzv2DHK72E1l_gzEpmsz2aWvekt1xll25JxeSq0BhyyAFu_MdomuA8Ocu7pBZvxE_IhH9WNI4svNfYmplHawl_93TCSBW_nEfkCEKYBV9l_b_lVbj_giG3RyARofoelYjdze__tK1J0yz">
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Westwood Institute of Technology</h3>
+<div class="flex items-center bg-status-success/10 text-status-success px-2 py-0.5 rounded font-label-sm text-label-sm gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span>
+                                4.7
+                            </div>
+</div>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>
+                            San Francisco, California
+                        </p>
+<div class="grid grid-cols-2 gap-4 mb-6 border-t border-border-subtle pt-4 mt-auto">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Avg. Fees</p>
+<p class="font-label-md text-label-md text-on-surface">$48,000 / yr</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Acceptance</p>
+<p class="font-label-md text-label-md text-on-surface">22%</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-grow font-label-md text-label-md border border-border-subtle text-on-surface-variant py-2 rounded hover:text-primary hover:border-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                                Add to Compare
+                            </button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-outline hover:text-secondary hover:border-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">favorite_border</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface border border-border-subtle rounded-lg overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col group">
+<div class="relative h-48 w-full bg-surface-dim overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-fixed to-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl opacity-20">school</span>
+</div>
+<div class="absolute top-3 left-3 bg-surface-muted text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded shadow-sm">
+                            Public
+                        </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">State University of New York</h3>
+<div class="flex items-center bg-surface-muted text-on-surface px-2 py-0.5 rounded font-label-sm text-label-sm gap-1">
+<span class="material-symbols-outlined text-secondary" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span>
+                                4.2
+                            </div>
+</div>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>
+                            Albany, New York
+                        </p>
+<div class="grid grid-cols-2 gap-4 mb-6 border-t border-border-subtle pt-4 mt-auto">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Avg. Fees</p>
+<p class="font-label-md text-label-md text-on-surface">$12,500 / yr</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Acceptance</p>
+<p class="font-label-md text-label-md text-on-surface">54%</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-grow font-label-md text-label-md border border-border-subtle text-on-surface-variant py-2 rounded hover:text-primary hover:border-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                                Add to Compare
+                            </button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-outline hover:text-secondary hover:border-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">favorite_border</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface border border-border-subtle rounded-lg overflow-hidden hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-shadow duration-300 flex flex-col group">
+<div class="relative h-48 w-full bg-surface-dim overflow-hidden">
+<img alt="Students walking on campus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A bright, optimistic photograph of diverse students walking across a sunny college campus plaza. The architecture in the background is a mix of modern and traditional styles, framed by clear blue skies. The lighting is high-key and natural, creating a welcoming and active atmosphere. The color palette emphasizes clean whites, sky blues, and warm natural tones, perfectly integrating into a modern, minimalist light-mode user interface designed for student exploration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQFhrZoVEJUONQomUPspB4vmnwXz_k8fIqjmkbD2OeP1m9pJtflZirMVd1LM9jU6S-8ZHHQQ6405UoyhAeQWMTjtru5iG2z6i21aEN7Q0DtQMIrvpTalQMerBvYUwdooORGQApdkQlyM6rq-FIbzShDdOkdUJRoaTjXsP2tuO0fCuK5Cn6AFtOMpV8Sf_WUyC-YBkIoQlsrFtZVyb5vO7pVb0TaN48ltzv6P4deIPx1j3_7OaHhzOnsk3KoXN3QFE3RhrhQCCGVSWb">
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight">Chicago Global College</h3>
+<div class="flex items-center bg-status-success/10 text-status-success px-2 py-0.5 rounded font-label-sm text-label-sm gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">star</span>
+                                4.5
+                            </div>
+</div>
+<p class="font-body-sm text-body-sm text-outline flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>
+                            Chicago, Illinois
+                        </p>
+<div class="grid grid-cols-2 gap-4 mb-6 border-t border-border-subtle pt-4 mt-auto">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Avg. Fees</p>
+<p class="font-label-md text-label-md text-on-surface">$38,200 / yr</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Acceptance</p>
+<p class="font-label-md text-label-md text-on-surface">31%</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-grow font-label-md text-label-md border border-border-subtle text-on-surface-variant py-2 rounded hover:text-primary hover:border-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                                Add to Compare
+                            </button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-outline hover:text-secondary hover:border-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">favorite_border</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-center items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-outline hover:bg-surface-muted transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" style="font-size: 20px;">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded bg-primary text-on-primary font-label-md text-label-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-on-surface hover:bg-surface-muted transition-colors font-label-md text-label-md">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-on-surface hover:bg-surface-muted transition-colors font-label-md text-label-md">3</button>
+<span class="text-outline mx-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-on-surface hover:bg-surface-muted transition-colors font-label-md text-label-md">29</button>
+<button class="w-10 h-10 flex items-center justify-center rounded border border-border-subtle text-outline hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container dark:bg-inverse-surface border-t border-outline-variant dark:border-outline">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-desktop max-w-container-max mx-auto px-margin-desktop">
+<!-- Brand Column -->
+<div class="col-span-1 md:col-span-2 lg:col-span-1">
+<div class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary mb-4">
+                    EduSelect
+                </div>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant mb-6 pr-4">
+                    Empowering students and parents with data-driven insights to make the best college decisions.
+                </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant">
+                    © 2024 EduSelect College Discovery Platform. All rights reserved.
+                </p>
+</div>
+<!-- Links Column 1 -->
+<div>
+<h4 class="font-label-md text-label-md text-on-surface dark:text-inverse-on-surface mb-4 font-semibold">Platform</h4>
+<ul class="space-y-3">
+<li><a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">About Us</a></li>
+<li><a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Scholarships</a></li>
+<li><a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Student Forum</a></li>
+</ul>
+</div>
+<!-- Links Column 2 -->
+<div>
+<h4 class="font-label-md text-label-md text-on-surface dark:text-inverse-on-surface mb-4 font-semibold">Support</h4>
+<ul class="space-y-3">
+<li><a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Contact Support</a></li>
+<li><a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Privacy Policy</a></li>
+<li><a class="text-body-sm font-body-sm text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed underline transition-all focus:outline-none focus:ring-2 focus:ring-primary" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<!-- Connect Column -->
+<div>
+<h4 class="font-label-md text-label-md text-on-surface dark:text-inverse-on-surface mb-4 font-semibold">Connect</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-muted flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">mail</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-muted flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
