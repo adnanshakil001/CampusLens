@@ -11,7 +11,7 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { GitCompare, Landmark, Heart, Trash2, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
-export default function CollegesPage() {
+function CollegesContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -229,3 +229,15 @@ const X = ({ size, className }: { size?: number; className?: string }) => (
     <line x1="6" y1="6" x2="18" y2="18"></line>
   </svg>
 );
+
+export default function CollegesPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="flex-grow bg-[#fcf9f8] py-24 min-h-screen flex items-center justify-center">
+        <div className="text-lg font-bold text-outline animate-pulse">Loading Discovery Engine...</div>
+      </div>
+    }>
+      <CollegesContent />
+    </React.Suspense>
+  );
+}
