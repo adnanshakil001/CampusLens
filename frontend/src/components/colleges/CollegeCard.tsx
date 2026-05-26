@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Calendar, Award, BookOpen, ChevronRight, GitCompare, Heart } from 'lucide-react';
+import { MapPin, Calendar, Award, BookOpen, ChevronRight, GitCompare, Heart, GraduationCap } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
