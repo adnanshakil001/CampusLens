@@ -10,8 +10,10 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { useSession } from 'next-auth/react';
 import { MessageSquare, Calendar, ChevronUp, ChevronDown, PenTool, Eye, MessageCircle, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function DiscussionsPage() {
+  const router = useRouter();
   const { data: session } = useSession();
   const { data: questions, isLoading, error } = useQuestions();
   const createQuestionMutation = useCreateQuestion();
