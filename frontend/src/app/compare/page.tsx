@@ -9,7 +9,7 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { GitCompare, Plus, ArrowLeft, Trash2, Landmark } from 'lucide-react';
 import Link from 'next/link';
 
-export default function ComparePage() {
+function CompareContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -130,5 +130,17 @@ export default function ComparePage() {
 
       </div>
     </div>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <React.Suspense fallback={
+      <div className="flex-grow bg-[#fcf9f8] py-24 min-h-screen flex items-center justify-center">
+        <div className="text-lg font-bold text-outline animate-pulse">Loading Comparison Matrix...</div>
+      </div>
+    }>
+      <CompareContent />
+    </React.Suspense>
   );
 }

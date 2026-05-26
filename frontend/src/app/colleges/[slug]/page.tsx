@@ -24,7 +24,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
-export default function CollegeDetailPage() {
+function CollegeDetailContent() {
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -282,5 +282,17 @@ export default function CollegeDetailPage() {
       </div>
 
     </div>
+  );
+}
+
+export default function CollegeDetailPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="flex-grow bg-[#fcf9f8] py-24 min-h-screen flex items-center justify-center">
+        <div className="text-lg font-bold text-outline animate-pulse">Loading College Details...</div>
+      </div>
+    }>
+      <CollegeDetailContent />
+    </React.Suspense>
   );
 }
