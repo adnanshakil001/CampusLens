@@ -13,9 +13,11 @@ export interface College {
   rating: number | string;
   logo_url?: string;
   cover_url?: string;
-  overview: string;
+  overview?: string;
   established?: number;
   ranking?: number;
+  avg_package?: string;
+  highest_package?: string;
 }
 
 export interface CollegeFilters {

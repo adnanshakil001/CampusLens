@@ -14,17 +14,18 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled || isLoading}
         className={cn(
-          'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-98 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100',
+          // Base styles with Emil Kowalski press scale (0.97) & fast cubic-bezier ease-out
+          'inline-flex items-center justify-center font-bold rounded-xl transition-all duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] focus:outline-none focus:ring-2 focus:ring-orange-500/30 active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 cursor-pointer select-none',
           {
             // Variants
-            'bg-primary text-white hover:bg-primary-container shadow-md hover:shadow-lg': variant === 'primary',
-            'bg-secondary text-white hover:bg-secondary-container shadow-md hover:shadow-lg': variant === 'secondary',
-            'border-2 border-border-subtle bg-transparent text-on-surface hover:bg-surface-muted hover:border-outline': variant === 'outline',
-            'bg-transparent text-on-surface-variant hover:bg-surface-muted': variant === 'ghost',
+            'bg-primary text-white hover:bg-primary-container shadow-sm hover:shadow-md border border-white/10': variant === 'primary',
+            'bg-orange-600 text-white hover:bg-orange-700 shadow-sm hover:shadow-md hover:shadow-orange-500/20 border border-white/10': variant === 'secondary',
+            'border border-gray-200 bg-white text-gray-900 hover:bg-gray-50 hover:border-gray-300 shadow-2xs': variant === 'outline',
+            'bg-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-100/80': variant === 'ghost',
             // Sizes
-            'text-xs px-3 py-1.5': size === 'sm',
-            'text-sm px-5 py-2.5': size === 'md',
-            'text-base px-6 py-3': size === 'lg',
+            'text-xs px-3.5 py-1.5 rounded-lg': size === 'sm',
+            'text-sm px-5 py-2.5 rounded-xl': size === 'md',
+            'text-base px-6 py-3 rounded-xl': size === 'lg',
           },
           className
         )}
@@ -52,3 +53,4 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = 'Button';
+

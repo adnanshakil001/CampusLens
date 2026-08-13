@@ -42,31 +42,31 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Overlay background */}
+      {/* Overlay background with smooth blur fade */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 animate-fade-in"
+        className="fixed inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-200 ease-out animate-fade-in"
       />
 
-      {/* Modal dialog box */}
+      {/* Modal dialog box (Starts from scale(0.95) + opacity: 0, never scale(0)) */}
       <div
         className={cn(
-          'relative w-full max-w-lg bg-surface rounded-xl shadow-xl border border-border-subtle p-6 overflow-hidden z-10 scale-95 opacity-0 animate-scale-in',
+          'relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 overflow-hidden z-10 animate-scale-in transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]',
           className
         )}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-border-subtle pb-4 mb-4">
+        <div className="flex items-center justify-between border-b border-gray-100 pb-4 mb-4">
           {title ? (
-            <h3 className="text-lg font-bold text-on-surface leading-none">{title}</h3>
+            <h3 className="text-lg font-extrabold text-gray-900 leading-none">{title}</h3>
           ) : (
             <div />
           )}
           <button
             onClick={onClose}
-            className="text-on-surface-variant hover:text-on-surface p-1 rounded-lg hover:bg-surface-muted transition-colors active:scale-95"
+            className="text-gray-400 hover:text-gray-900 p-1.5 rounded-xl hover:bg-gray-100 transition-colors active:scale-95 cursor-pointer"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
@@ -78,3 +78,4 @@ export const Modal: React.FC<ModalProps> = ({
     </div>
   );
 };
+

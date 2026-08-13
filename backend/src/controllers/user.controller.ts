@@ -73,3 +73,15 @@ export const unsaveCollege = async (req: Request, res: Response, next: NextFunct
     next(error);
   }
 };
+
+export const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const result = await pool.query(
+      'SELECT id, email, full_name, role, created_at FROM users ORDER BY created_at DESC'
+    );
+    res.status(200).json(result.rows);
+  } catch (error) {
+    next(error);
+  }
+};
+

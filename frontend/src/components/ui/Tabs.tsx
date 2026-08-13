@@ -20,7 +20,7 @@ export const Tabs: React.FC<TabsProps> = ({
   className,
 }) => {
   return (
-    <div className={cn('border-b border-border-subtle flex gap-6 overflow-x-auto scrollbar-none', className)}>
+    <div className={cn('border-b border-gray-200 flex gap-6 overflow-x-auto custom-scrollbar scrollbar-none', className)}>
       {tabs.map((tab) => {
         const isActive = tab.id === activeTab;
         return (
@@ -28,16 +28,20 @@ export const Tabs: React.FC<TabsProps> = ({
             key={tab.id}
             onClick={() => onChange(tab.id)}
             className={cn(
-              'pb-3.5 text-sm font-semibold whitespace-nowrap transition-all duration-200 border-b-2 border-transparent hover:text-primary active:scale-98',
+              'relative pb-3.5 text-sm font-extrabold whitespace-nowrap transition-all duration-150 ease-out active:scale-[0.98] cursor-pointer select-none',
               isActive
-                ? 'text-primary border-primary'
-                : 'text-on-surface-variant hover:border-border-subtle'
+                ? 'text-orange-600'
+                : 'text-gray-500 hover:text-gray-900'
             )}
           >
-            {tab.label}
+            <span>{tab.label}</span>
+            {isActive && (
+              <span className="absolute bottom-0 inset-x-0 h-0.5 bg-orange-600 rounded-full transition-all duration-200 ease-out" />
+            )}
           </button>
         );
       })}
     </div>
   );
 };
+

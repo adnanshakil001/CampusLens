@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Filter, RotateCcw, Landmark, DollarSign, Star, GraduationCap } from 'lucide-react';
+import { Filter, RotateCcw, Landmark, DollarSign, Star, GraduationCap, X, Check } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Select } from '@/components/ui/Select';
@@ -24,6 +24,8 @@ export const CollegeFilters: React.FC<CollegeFiltersProps> = ({
     { value: 'Delhi', label: 'Delhi' },
     { value: 'Tamil Nadu', label: 'Tamil Nadu' },
     { value: 'Rajasthan', label: 'Rajasthan' },
+    { value: 'Telangana', label: 'Telangana' },
+    { value: 'Karnataka', label: 'Karnataka' },
   ];
 
   const typeOptions = [
@@ -34,15 +36,17 @@ export const CollegeFilters: React.FC<CollegeFiltersProps> = ({
 
   const ratingOptions = [
     { value: '0', label: 'Any Rating' },
-    { value: '4.5', label: '4.5 & Above' },
-    { value: '4.0', label: '4.0 & Above' },
-    { value: '3.5', label: '3.5 & Above' },
+    { value: '4.5', label: '⭐ 4.5 & Above' },
+    { value: '4.0', label: '⭐ 4.0 & Above' },
+    { value: '3.5', label: '⭐ 3.5 & Above' },
   ];
 
   const examOptions = [
     { value: '', label: 'Select Exam' },
     { value: 'JEE Main', label: 'JEE Main' },
     { value: 'JEE Advanced', label: 'JEE Advanced' },
+    { value: 'BITSAT', label: 'BITSAT' },
+    { value: 'MHT CET', label: 'MHT CET' },
   ];
 
   const handleFilterChange = (key: keyof FilterType, value: any) => {
@@ -52,24 +56,65 @@ export const CollegeFilters: React.FC<CollegeFiltersProps> = ({
     });
   };
 
+  const removeFilterKey = (key: keyof FilterType) => {
+    const updated = { ...filters };
+    delete updated[key];
+    onChange(updated);
+  };
+
+  // Compute active filters list for pill badges
+  const activePills = React.useMemo(() => {
+    const pills: { key: keyof FilterType; label: string }[] = [];
+    if (filters.type) pills.push({ key: 'type', label: `Type: ${filters.type}` });
+    if (filters.state) pills.push({ key: 'state', label: `State: ${filters.state}` });
+    if (filters.minRating && filters.minRating > 0) pills.push({ key: 'minRating', label: `Rating: ${filters.minRating}+` });
+    if (filters.minFees) pills.push({ key: 'minFees', label: `Min Fee: ₹${(filters.minFees / 100000).toFixed(1)}L` });
+    if (filters.maxFees) pills.push({ key: 'maxFees', label: `Max Fee: ₹${(filters.maxFees / 100000).toFixed(1)}L` });
+    if (filters.exam) pills.push({ key: 'exam', label: `Exam: ${filters.exam}` });
+    if (filters.rank) pills.push({ key: 'rank', label: `Rank: ${filters.rank}` });
+    return pills;
+  }, [filters]);
+
   return (
-    <div className="bg-surface border border-border-subtle rounded-xl p-5 shadow-sm sticky top-24 flex flex-col gap-6">
-      {/* Title & Clear Action */}
-      <div className="flex items-center justify-between pb-4 border-b border-border-subtle">
-        <h3 className="text-base font-bold text-on-surface flex items-center gap-2">
-          <Filter size={18} className="text-primary" />
-          Filter Colleges
+    <div className="bg-white/90 backdrop-blur-xl border border-gray-200/80 rounded-2xl p-5 sm:p-6 shadow-lg shadow-gray-200/50 sticky top-24 z-20 flex flex-col gap-6 transition-all duration-200">
+      
+      {/* Title & Clear Action Header */}
+      <div className="flex items-center justify-between pb-4 border-b border-gray-100">
+        <h3 className="text-base font-extrabold text-gray-900 flex items-center gap-2">
+          <Filter size={18} className="text-orange-600" />
+          <span>Filter Colleges</span>
         </h3>
-        <button
-          onClick={onClear}
-          className="text-xs font-bold text-outline hover:text-primary flex items-center gap-1 transition-colors active:scale-95"
-        >
-          <RotateCcw size={12} />
-          Reset All
-        </button>
+        {activePills.length > 0 && (
+          <button
+            onClick={onClear}
+            className="text-xs font-bold text-gray-500 hover:text-orange-600 flex items-center gap-1 transition-colors active:scale-95 cursor-pointer"
+          >
+            <RotateCcw size={12} />
+            <span>Reset All</span>
+          </button>
+        )}
       </div>
 
-      {/* College Type & State */}
+      {/* Active Filter Pill Badges */}
+      {activePills.length > 0 && (
+        <div className="flex flex-col gap-2 pb-4 border-b border-gray-100">
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">Active Filters</span>
+          <div className="flex flex-wrap gap-1.5">
+            {activePills.map((pill) => (
+              <button
+                key={pill.key}
+                onClick={() => removeFilterKey(pill.key)}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-50 text-orange-700 border border-orange-200 text-xs font-bold transition-all duration-150 hover:bg-orange-100 active:scale-95 cursor-pointer"
+              >
+                <span>{pill.label}</span>
+                <X size={12} className="text-orange-600 hover:text-orange-900" />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* College Type & State Selectors */}
       <div className="flex flex-col gap-4">
         <Select
           label="College Type"
@@ -79,7 +124,7 @@ export const CollegeFilters: React.FC<CollegeFiltersProps> = ({
         />
 
         <Select
-          label="State"
+          label="State / Region"
           options={stateOptions}
           value={filters.state || ''}
           onChange={(e) => handleFilterChange('state', e.target.value)}
@@ -87,12 +132,12 @@ export const CollegeFilters: React.FC<CollegeFiltersProps> = ({
       </div>
 
       {/* Annual Fees Limit */}
-      <div className="flex flex-col gap-3">
-        <label className="text-sm font-semibold text-on-surface-variant flex items-center gap-1.5">
-          <DollarSign size={16} className="text-outline" />
+      <div className="flex flex-col gap-2.5">
+        <label className="text-xs font-bold text-gray-700 uppercase tracking-wider flex items-center gap-1.5">
+          <DollarSign size={14} className="text-gray-400" />
           Annual Fees Limit (INR)
         </label>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2.5">
           <Input
             placeholder="Min Fees"
             type="number"
@@ -109,9 +154,9 @@ export const CollegeFilters: React.FC<CollegeFiltersProps> = ({
       </div>
 
       {/* Minimum Rating */}
-      <div className="flex flex-col gap-3">
-        <label className="text-sm font-semibold text-on-surface-variant flex items-center gap-1.5">
-          <Star size={16} className="text-outline" />
+      <div className="flex flex-col gap-2.5">
+        <label className="text-xs font-bold text-gray-700 uppercase tracking-wider flex items-center gap-1.5">
+          <Star size={14} className="text-amber-500" />
           Minimum Rating
         </label>
         <Select
@@ -121,14 +166,14 @@ export const CollegeFilters: React.FC<CollegeFiltersProps> = ({
         />
       </div>
 
-      {/* Rank Cutoff Predictor Integration! */}
-      <div className="border-t border-border-subtle pt-5 flex flex-col gap-4">
-        <label className="text-sm font-bold text-primary flex items-center gap-1.5 uppercase tracking-wider">
-          <GraduationCap size={18} />
-          Predictor Filter
+      {/* Rank Cutoff Predictor Integration */}
+      <div className="border-t border-gray-100 pt-5 flex flex-col gap-3.5">
+        <label className="text-xs font-extrabold text-orange-600 flex items-center gap-1.5 uppercase tracking-wider">
+          <GraduationCap size={16} />
+          <span>Seat Predictor Filter</span>
         </label>
-        <p className="text-xs font-semibold text-on-surface-variant leading-relaxed mb-1">
-          Input your rank to filter colleges with cutoffs higher than your rank score.
+        <p className="text-xs font-medium text-gray-500 leading-relaxed">
+          Select exam & enter your rank score to filter eligible cutoffs.
         </p>
         
         <Select
@@ -138,13 +183,15 @@ export const CollegeFilters: React.FC<CollegeFiltersProps> = ({
         />
 
         <Input
-          placeholder="Enter Your Rank"
+          placeholder="Enter Your Rank Score"
           type="number"
           disabled={!filters.exam}
           value={filters.rank || ''}
           onChange={(e) => handleFilterChange('rank', e.target.value ? Number(e.target.value) : undefined)}
         />
       </div>
+
     </div>
   );
 };
+
