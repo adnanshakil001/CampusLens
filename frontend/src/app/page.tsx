@@ -27,6 +27,57 @@ export default function HomePage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = React.useState('');
   const [selectedCategory, setSelectedCategory] = React.useState('All');
+  const [mousePos, setMousePos] = React.useState({ x: 600, y: 300 });
+
+  // AUTOMATED PHOTO CAROUSEL SLIDES FOR RIGHT SHOWCASE CARD
+  const campusSlides = [
+    {
+      name: 'IIT Bombay Main Campus',
+      location: 'Mumbai, Maharashtra',
+      nirf: 'NIRF #3 Overall',
+      image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=1200&q=80',
+    },
+    {
+      name: 'BITS Pilani Main Campus',
+      location: 'Pilani, Rajasthan',
+      nirf: 'NIRF #25 Overall',
+      image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&q=80',
+    },
+    {
+      name: 'NIT Trichy Campus',
+      location: 'Tiruchirappalli, Tamil Nadu',
+      nirf: 'NIRF #9 Engineering',
+      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80',
+    },
+    {
+      name: 'IIT Delhi Campus',
+      location: 'Hauz Khas, New Delhi',
+      nirf: 'NIRF #2 Engineering',
+      image: 'https://images.unsplash.com/photo-1592285850223-874906045d62?w=1200&q=80',
+    },
+  ];
+
+  const [currentSlideIndex, setCurrentSlideIndex] = React.useState(0);
+  const [isSlidePaused, setIsSlidePaused] = React.useState(false);
+
+  // AUTO-ROTATION CAROUSEL TIMER (EVERY 4 SECONDS)
+  React.useEffect(() => {
+    if (isSlidePaused) return;
+
+    const timer = setInterval(() => {
+      setCurrentSlideIndex((prev) => (prev + 1) % campusSlides.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [isSlidePaused, campusSlides.length]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -131,75 +182,204 @@ export default function HomePage() {
     <div className="flex-grow flex flex-col bg-[#faf9f8] text-foreground min-h-screen font-sans selection:bg-orange-500/20 selection:text-orange-900">
       
       {/* ------------------------------------------------------------- */}
-      {/* 1. HERO SECTION WITH APPLE-GRADE FROSTED GLASS & GRADIENT H1  */}
+      {/* 1. UNIVERSITY PORTAL HERO SECTION (INSPIRATION FORMAT)        */}
       {/* ------------------------------------------------------------- */}
-      <section className="relative bg-gradient-to-b from-[#000533] via-[#050b42] to-[#000666] text-white overflow-hidden py-24 sm:py-36 flex flex-col items-center">
+      <section 
+        onMouseMove={handleMouseMove}
+        className="relative bg-[#f8f6f2] text-gray-900 overflow-hidden border-b border-gray-200/80 min-h-[580px] lg:min-h-[640px] flex items-center select-none"
+      >
         
-        {/* Background Mesh Glow Layers */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(164,61,7,0.25),transparent_50%)] pointer-events-none" />
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-r from-blue-600/20 to-orange-500/20 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1600&q=80')] bg-cover bg-center opacity-[0.06] mix-blend-overlay" />
+        {/* INTERACTIVE CURSOR SPOTLIGHT BEAM */}
+        <div 
+          className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-10"
+          style={{
+            background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 127, 72, 0.12), rgba(83, 58, 253, 0.06) 45%, transparent 75%)`,
+          }}
+        />
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center gap-8 z-10">
+        {/* Geometric Islamic/Architectural Pattern Background Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e5e1d8_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
+
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-20">
           
-          {/* Frosted Glass Announcement Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg text-xs font-bold tracking-wide text-orange-300 transition-all duration-200 hover:bg-white/15 active:scale-[0.98]">
-            <Sparkles size={14} className="text-orange-400 animate-pulse" />
-            <span>CampusLens 2.0 • Data-Driven College Matching</span>
+          {/* LEFT CONTENT & ACTION GRID COLUMN (7 COLS) */}
+          <div className="lg:col-span-7 flex flex-col items-start gap-7 pr-0 lg:pr-6">
+            
+            {/* Teal Eyebrow Tagline */}
+            <div className="inline-flex items-center gap-2 text-teal-700 font-extrabold text-sm sm:text-base tracking-wide">
+              <Sparkles size={16} className="text-teal-600 animate-pulse" />
+              <span>Combine Data with Opportunity</span>
+            </div>
+
+            {/* Bold Clean University Display Title */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 leading-[1.08] font-sans">
+              CampusLens <br />
+              University Portal.
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg text-gray-600 max-w-xl font-medium leading-relaxed">
+              Compare verified placement statistics, annual tuition fees, and JEE/NEET seat cutoff ranks across premier institutions in India.
+            </p>
+
+            {/* Search Console */}
+            <div className="w-full max-w-xl mt-1 flex flex-col gap-2.5">
+              <form
+                onSubmit={handleSearchSubmit}
+                className="relative flex items-center bg-white rounded-2xl shadow-md border border-gray-200 p-2 focus-within:ring-3 focus-within:ring-orange-500/20 focus-within:border-orange-500 transition-all"
+              >
+                <div className="pl-3.5 text-gray-400 shrink-0">
+                  <Search size={20} className="text-orange-600" />
+                </div>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search college, course (e.g. IIT Bombay, CSE)..."
+                  className="flex-grow pl-3 pr-4 py-2 bg-transparent text-sm font-semibold text-gray-900 placeholder:text-gray-400 outline-none border-none"
+                />
+                <button 
+                  type="submit" 
+                  className="shrink-0 rounded-xl px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow-sm active:scale-95 transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>Search</span>
+                  <ArrowRight size={14} />
+                </button>
+              </form>
+
+              {/* POPULAR SEARCHES TAG ROW */}
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="text-gray-500 font-bold text-[11px] uppercase tracking-wider">Popular:</span>
+                {popularTags.map((tag, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => handleTagClick(tag)}
+                    className="px-3 py-1 rounded-lg bg-white hover:bg-orange-50 text-gray-700 hover:text-orange-600 font-bold border border-gray-200/90 shadow-2xs transition-all active:scale-95 cursor-pointer flex items-center gap-1"
+                  >
+                    <span className="text-orange-500 font-extrabold">#</span>
+                    <span>{tag}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* 2x2 FEATURE BUTTONS GRID (MATCHING REFERENCE IMAGE FORMAT) */}
+            <div className="w-full max-w-xl grid grid-cols-2 gap-3.5 mt-2">
+              
+              {/* Box 1 (Active Orange Accent with Arrow ↗) */}
+              <Link
+                href="/colleges"
+                className="flex items-center justify-between p-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-extrabold text-sm shadow-md transition-all active:scale-[0.98] group cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Landmark size={18} />
+                  <span>Admission & Colleges</span>
+                </div>
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              {/* Box 2 (White Card) */}
+              <Link
+                href="/compare"
+                className="flex items-center justify-between p-4 rounded-xl bg-white hover:bg-gray-50 text-gray-800 font-extrabold text-sm border border-gray-200/90 shadow-2xs transition-all active:scale-[0.98] group cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <GitCompare size={18} className="text-indigo-600" />
+                  <span>Compare Matrix</span>
+                </div>
+                <ArrowRight size={16} className="text-gray-400 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              {/* Box 3 (White Card) */}
+              <Link
+                href="/predictor"
+                className="flex items-center justify-between p-4 rounded-xl bg-white hover:bg-gray-50 text-gray-800 font-extrabold text-sm border border-gray-200/90 shadow-2xs transition-all active:scale-[0.98] group cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <GraduationCap size={18} className="text-emerald-600" />
+                  <span>Cutoff Predictor</span>
+                </div>
+                <ArrowRight size={16} className="text-gray-400 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              {/* Box 4 (White Card) */}
+              <Link
+                href="/discussions"
+                className="flex items-center justify-between p-4 rounded-xl bg-white hover:bg-gray-50 text-gray-800 font-extrabold text-sm border border-gray-200/90 shadow-2xs transition-all active:scale-[0.98] group cursor-pointer"
+              >
+                <div className="flex items-center gap-2.5">
+                  <MessageSquare size={18} className="text-blue-600" />
+                  <span>Student Q&A</span>
+                </div>
+                <ArrowRight size={16} className="text-gray-400 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            {/* Bottom Location & Verified Affordance */}
+            <div className="flex items-center gap-2 text-xs font-semibold text-gray-500 mt-2">
+              <MapPin size={14} className="text-orange-600" />
+              <span>85+ Verified Indian Campuses • NIRF 2025 Data</span>
+            </div>
+
           </div>
 
-          {/* Optical Display Heading */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.08] text-white max-w-4xl">
-            Discover Your Perfect <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-200 bg-clip-text text-transparent">
-              University Campus
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-xl text-white/80 max-w-2xl font-normal leading-relaxed tracking-tight">
-            Compare verified placement statistics, tuition fee structures, and seat cutoff ranks across top engineering & management institutions in India.
-          </p>
-
-          {/* Floating Glassmorphic Search Console */}
-          <div className="w-full max-w-2xl mt-4">
-            <form
-              onSubmit={handleSearchSubmit}
-              className="relative flex items-center bg-white/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] p-2 border border-white/40 focus-within:ring-4 focus-within:ring-orange-500/30 focus-within:border-orange-500/50 transition-all duration-200 active:scale-[0.995]"
-            >
-              <div className="pl-4 text-gray-400 shrink-0">
-                <Search size={22} className="text-gray-500" />
-              </div>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by college name, course (e.g. IIT Bombay, CSE)..."
-                className="flex-grow pl-3 pr-4 py-3.5 bg-transparent text-sm sm:text-base font-medium text-gray-900 placeholder:text-gray-400 outline-none border-none"
+          {/* RIGHT COLUMN: CAMPUS PHOTOGRAPHY SHOWCASE (5 COLS) WITH AUTOMATED CAROUSEL */}
+          <div 
+            onMouseEnter={() => setIsSlidePaused(true)}
+            onMouseLeave={() => setIsSlidePaused(false)}
+            className="lg:col-span-5 relative h-[380px] sm:h-[460px] w-full rounded-3xl overflow-hidden shadow-2xl border border-gray-200/60 group select-none"
+          >
+            {/* Campus Architectural Showcase Images with Crossfade */}
+            {campusSlides.map((slide, idx) => (
+              <div 
+                key={idx}
+                className={`absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out ${
+                  idx === currentSlideIndex 
+                    ? 'opacity-100 scale-100 z-10' 
+                    : 'opacity-0 scale-105 pointer-events-none z-0'
+                }`}
+                style={{ backgroundImage: `url(${slide.image})` }}
               />
-              <Button 
-                variant="secondary" 
-                type="submit" 
-                size="lg"
-                className="shrink-0 rounded-xl px-6 font-bold shadow-md hover:shadow-orange-500/25 active:scale-[0.97] transition-all duration-150"
-              >
-                <span>Find Colleges</span>
-                <ArrowRight size={16} className="ml-1" />
-              </Button>
-            </form>
+            ))}
 
-            {/* Quick Search Tag Pills */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-xs">
-              <span className="text-white/60 font-medium">Popular Searches:</span>
-              {popularTags.map((tag, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleTagClick(tag)}
-                  className="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white/90 font-medium border border-white/10 backdrop-blur-xs transition-all duration-150 active:scale-95 cursor-pointer"
-                >
-                  #{tag}
-                </button>
-              ))}
+            {/* Gradient Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent z-20 pointer-events-none" />
+
+            {/* Top Badge */}
+            <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-xs font-extrabold text-gray-900 shadow-md z-30 transition-all duration-300">
+              <Building2 size={14} className="text-orange-600 animate-pulse" />
+              <span>{campusSlides[currentSlideIndex].name}</span>
             </div>
+
+            {/* Bottom Info & Slide Dots */}
+            <div className="absolute bottom-4 inset-x-4 flex items-center justify-between text-white z-30">
+              <div className="flex flex-col">
+                <p className="text-xs font-bold text-white/80 uppercase tracking-wider">
+                  {campusSlides[currentSlideIndex].nirf}
+                </p>
+                <p className="text-base font-extrabold text-white">
+                  {campusSlides[currentSlideIndex].location}
+                </p>
+              </div>
+
+              {/* Slide Indicator Dots (Clickable) */}
+              <div className="flex items-center gap-1.5 bg-black/30 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/20">
+                {campusSlides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlideIndex(idx)}
+                    className={`transition-all duration-300 rounded-full cursor-pointer ${
+                      idx === currentSlideIndex 
+                        ? 'h-2 w-5 bg-orange-500 shadow-xs' 
+                        : 'h-2 w-2 bg-white/60 hover:bg-white'
+                    }`}
+                    title={`Jump to slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
           </div>
 
         </div>
